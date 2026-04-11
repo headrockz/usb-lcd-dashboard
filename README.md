@@ -60,8 +60,8 @@ When switching screens, a retro 8-bit boot animation plays on the LCD (static no
 ### Install
 
 ```bash
-git clone https://github.com/viktorkav/zima-screens.git
-cd zima-screens
+git clone https://github.com/viktorkav/usb-lcd-dashboard.git
+cd usb-lcd-dashboard
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
