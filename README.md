@@ -12,6 +12,30 @@ These cheap 3.5" USB IPS screens (~$15 on AliExpress) don't work as regular moni
 
 This project turns that limitation into a feature: a purpose-built dashboard rendering pixel-perfect layouts with a retro terminal aesthetic.
 
+## Project structure
+
+```text
+usb-lcd-dashboard/
+├── lcd/                    # LCD hardware abstraction layer
+│   ├── __init__.py         # Package facade
+│   ├── constants.py        # Screen dimensions, colors, protocol commands
+│   ├── screen.py           # Serial hardware driver (Screen class)
+│   ├── drawing.py          # UI primitives (fonts, panels, bars, sparklines)
+│   └── helpers.py          # Formatting utilities (colors, bytes, truncate)
+├── homelab_monitor/        # Monitor application logic
+│   ├── __init__.py         # Package marker
+│   ├── stats.py            # Local system stats (psutil + /proc fallback)
+│   ├── remote.py           # Remote stats via SSH
+│   └── ui.py               # Dashboard rendering
+├── test/                   # Test scripts and archived code
+├── screenshots/            # Preview images
+├── homelab_monitor.py      # Entry point
+├── docker-compose.yml      # Docker services
+├── Dockerfile              # Container image
+├── .env.example            # Environment variables template
+└── pyproject.toml          # Python dependencies
+```
+
 ## Features
 
 **Homelab Monitor** displays side-by-side stats for two servers:
@@ -120,30 +144,6 @@ The screen uses the **Turing Smart Screen Revision A** protocol:
 6. Send bitmap command + pixel data in chunks over serial
 
 Full-screen refresh takes ~1-2 seconds, so expect **~1-2 FPS**. Good enough for dashboards and timers, not for animation or video.
-
-## Project structure
-
-```text
-usb-lcd-dashboard/
-├── lcd/                    # LCD hardware abstraction layer
-│   ├── __init__.py         # Package facade
-│   ├── constants.py        # Screen dimensions, colors, protocol commands
-│   ├── screen.py           # Serial hardware driver (Screen class)
-│   ├── drawing.py          # UI primitives (fonts, panels, bars, sparklines)
-│   └── helpers.py          # Formatting utilities (colors, bytes, truncate)
-├── homelab_monitor/        # Monitor application logic
-│   ├── __init__.py         # Package marker
-│   ├── stats.py            # Local system stats (psutil + /proc fallback)
-│   ├── remote.py           # Remote stats via SSH
-│   └── ui.py               # Dashboard rendering
-├── test/                   # Test scripts and archived code
-├── screenshots/            # Preview images
-├── homelab_monitor.py      # Entry point
-├── docker-compose.yml      # Docker services
-├── Dockerfile              # Container image
-├── .env.example            # Environment variables template
-└── pyproject.toml          # Python dependencies
-```
 
 ## Compatible screens
 
