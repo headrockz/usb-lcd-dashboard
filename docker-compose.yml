@@ -1,0 +1,11 @@
+services:
+  homelab-monitor:
+    build: .
+    container_name: homelab-monitor
+    restart: unless-stopped
+    env_file: .env
+    # devices:
+    #   - /dev/ttyACM1:/dev/ttyACM1
+    volumes:
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+      - ~/.ssh/known_hosts:/root/.ssh/known_hosts:ro

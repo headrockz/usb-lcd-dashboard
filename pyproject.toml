@@ -1,0 +1,21 @@
+[project]
+name = "usb-lcd-dashboard"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Asafe Felipe",email = "azapphrz@gmail.com"}
+]
+readme = "README.md"
+requires-python = "^3.12"
+dependencies = [
+    "pyserial (>=3.5,<4.0)",
+    "pillow (>=12.2.0,<13.0.0)",
+    "numpy (>=2.4.6,<3.0.0)",
+    "psutil (>=7.2.2,<8.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

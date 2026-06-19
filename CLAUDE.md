@@ -4,23 +4,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Dashboard screens for a 3.5" USB IPS LCD (320×480, Turing Smart Screen Rev A protocol) driven over serial. Five screens (system monitor, Discord, YouTube, Pomodoro, Steam discovery) managed by a web controller. Built for ZimaBoard but works on any Linux/macOS machine with a compatible USB screen.
+Dashboard screens for a 3.5" USB IPS LCD (320×480, Turing Smart Screen Rev A protocol) driven over serial. Two screens (system monitor, Pomodoro) managed by a web controller. Built for ZimaBoard but works on any Linux/macOS machine with a compatible USB screen.
 
 ## Running
 
 ```bash
-# Install (Python 3.8+, venv recommended)
-pip install -r requirements.txt
+# Install dependencies
+poetry install
 
 # Start web controller (manages all screens, serves on port 9595)
-python3 web_controller.py
+poetry run python web_controller.py
 
 # Run a single screen directly
-python3 steam_random.py
-python3 pomodoro.py --work 25 --break 5
+poetry run python zima_monitor.py
+poetry run python pomodoro.py --work 25 --break 5
 
 # Preview mode — saves PNG instead of sending to screen (no hardware needed)
-python3 steam_random.py --preview
+poetry run python pomodoro.py --preview
 ```
 
 There are no tests, linter, or build system. The project is plain Python scripts with no package structure.
@@ -46,15 +46,13 @@ There are no tests, linter, or build system. The project is plain Python scripts
 
 **transition.py** draws an 8-bit boot animation (static noise → console text → segmented loading bar) directly on the screen hardware.
 
-**State files** (gitignored): `pomodoro_state.json` (timer state, resets daily), `pulse_state.json` (YouTube view history for delta tracking).
+**State files** (gitignored): `pomodoro_state.json` (timer state, resets daily).
 
 ## Environment variables
 
-Configured via `.env` (see `.env.example`). Most screens work without config:
-- Pomodoro and Steam Discovery need zero config
+Configured via `.env` (see `.env.example`).
+- Pomodoro needs zero config
 - Zima Monitor works in local-only mode without `REMOTE_IP`
-- Channel Pulse works without API key (uses YouTube RSS)
-- Discord Monitor requires `DISCORD_TOKEN` and `GUILD_ID`
 
 ## Key constraints
 

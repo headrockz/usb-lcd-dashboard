@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+
+.git/
+.gitignore
+*.egg-info/
+screenshots/
+test/
+*.png
