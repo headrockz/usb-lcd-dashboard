@@ -38,7 +38,9 @@ TEMP_ORANGE  = int(os.getenv("TEMP_ORANGE",  "60"))
 CPU_BAR_RED    = int(os.getenv("CPU_BAR_RED",    "70"))
 CPU_BAR_ORANGE = int(os.getenv("CPU_BAR_ORANGE", "55"))
 
-logging.basicConfig(level=logging.WARNING)
+format_log = "%(asctime)s - %(levelname)s:%(funcName)s:%(message)s"
+logging.basicConfig(level=logging.INFO, format=format_log)
+log = logging.getLogger()
 
 # ── Main ─────────────────────────────────────────────────────
 
@@ -52,7 +54,7 @@ def main():
         try:
             screen = Screen()
         except Exception as e:
-            print(f"Screen not found: {e}")
+            log.error(f"Screen not found: {e}")
             sys.exit(1)
 
     config = {
@@ -76,7 +78,7 @@ def main():
     last_remote = 0.0
     last_docker = 0.0
 
-    print(f"Homelab Monitor | remote={REMOTE_IP}")
+    log.info(f"Homelab Monitor started | remote={REMOTE_IP}")
 
     try:
         while True:
@@ -111,7 +113,7 @@ def main():
                     os.path.dirname(os.path.abspath(__file__)),
                     "homelab_monitor_preview.png",
                 ))
-                print("Saved preview")
+                log.info("Preview saved to homelab_monitor_preview.png")
                 break
 
             screen.show(img)

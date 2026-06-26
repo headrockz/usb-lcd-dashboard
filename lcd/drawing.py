@@ -32,13 +32,13 @@ def load_font(size):
     return ImageFont.load_default()
 
 FONT_HEADER = load_font(15)
-FONT_TITLE  = load_font(11)
-FONT_DATA   = load_font(11)
+FONT_TITLE  = load_font(13)
+FONT_DATA   = load_font(13)
 FONT_BIG    = load_font(22)
 FONT_HUGE   = load_font(48)
-FONT_SMALL  = load_font(11)
-FONT_TINY   = load_font(10)
-FONT_MED    = load_font(13)
+FONT_SMALL  = load_font(15)
+FONT_TINY   = load_font(13)
+FONT_MED    = load_font(20)
 FONT_MEGA   = load_font(36)
 
 # ── Drawing helpers ────────────────────────────────────────────

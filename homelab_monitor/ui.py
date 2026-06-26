@@ -10,7 +10,7 @@ from lcd.constants import (
 )
 from lcd.drawing import (
     draw_bar, draw_corners,
-    FONT_SMALL, FONT_TINY, FONT_BIG, FONT_HEADER, FONT_DATA,
+    FONT_SMALL, FONT_TINY, FONT_BIG, FONT_MEGA, FONT_HEADER, FONT_DATA,
 )
 
 
@@ -116,8 +116,8 @@ def draw_device(draw, x0, x1, y0, y1, title, accent, stats, thresholds, online=T
     mem_detail = f"{mem_used:.0f}/{mem_total:.0f}GB"
     draw.text((px + 30, y + 1), mem_detail, fill=GREEN, font=FONT_TINY)
     mem_str = f"{mem:.0f}%"
-    mw = draw.textlength(mem_str, font=FONT_BIG)
-    draw.text((x1 - 10 - mw, y - 2), mem_str, fill=mc, font=FONT_BIG)
+    mw = draw.textlength(mem_str, font=FONT_MEGA)
+    draw.text((x1 - 10 - mw, y - 2), mem_str, fill=mc, font=FONT_MEGA)
     y += 26
     draw_bar(draw, px, y, pw, 8, mem, mc)
     y += 14
@@ -131,8 +131,8 @@ def draw_device(draw, x0, x1, y0, y1, title, accent, stats, thresholds, online=T
     disk_detail = f"{disk_used:.0f}/{disk_total:.0f}GB"
     draw.text((px + 30, y + 1), disk_detail, fill=GREEN, font=FONT_TINY)
     disk_str = f"{disk:.0f}%"
-    diskw = draw.textlength(disk_str, font=FONT_BIG)
-    draw.text((x1 - 10 - diskw, y - 2), disk_str, fill=dc, font=FONT_BIG)
+    diskw = draw.textlength(disk_str, font=FONT_MEGA)
+    draw.text((x1 - 10 - diskw, y - 2), disk_str, fill=dc, font=FONT_MEGA)
     y += 22
     draw_bar(draw, px, y, pw, 6, disk, dc)
     y += 12

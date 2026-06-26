@@ -74,7 +74,7 @@ class Screen:
         # Rotate landscape canvas to portrait for the physical screen.
         # Portrait canvases (SCREEN_W x SCREEN_H) are sent as-is.
         if img.size == (W, H):
-            img = img.rotate(-90, expand=True)
+            img = img.rotate(90, expand=True)
         if img.size != (SCREEN_W, SCREEN_H):
             img = img.resize((SCREEN_W, SCREEN_H))
         img = img.convert("RGB")

@@ -114,9 +114,12 @@ docker run -d \
   --device /dev/ttyACM0:/dev/ttyACM0 \
   -v ~/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro \
   -v ~/.ssh/known_hosts:/root/.ssh/known_hosts:ro \
+  -v /var/run/docker.sock:/var/run/docker.sock:ro \
   --env-file .env \
   homelab-monitor
 ```
+
+**Note:** The Docker socket mount (`/var/run/docker.sock`) is required for container stats. Remove it if you don't need Docker container monitoring.
 
 ### Serial port permissions
 
